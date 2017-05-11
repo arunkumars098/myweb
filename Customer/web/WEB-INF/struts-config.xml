@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="LoginForm" type="po.LoginForm"/>
+        <form-bean name="Insert2DBForm" type="po.Insert2DBForm"/>
+
+    </form-beans>
+    <action-mappings>
+        <action input="/Login" name="LoginForm" path="/Login" scope="session" type="po.Action">
+            <forward name="success" path="/NewPo.jsp" />
+            <forward name="failure" path="/TryAgain.jsp" />
+        </action>
+        <action input="/NewLogin" name="Insert2DBForm" path="/NewLogin" scope="session" type="po.Insert2DB">
+
+            <forward name="success" path="/retrive.do" />
+        </action>
+        <action path="/retrive" type="po.Retrive">
+            <forward name="success" path="/PoData.jsp" />
+       </action>
+        <action path="/Podata" type="po.Retrive">
+            <forward name="success" path="/PoData.jsp" />
+        </action>
+        <action path="/search" type="po.Search">
+            <forward name="failure" path="/Result.jsp" />
+
+        </action>
+
+
+
+
+    </action-mappings>
+</struts-config>
